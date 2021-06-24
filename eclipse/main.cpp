@@ -191,7 +191,7 @@ int main() {
     int wrong = 0;
     FILE* FI;
     FILE* FL;
-    /*fp = fopen("/mnt/host/char_label_smallNORB.bin", "rb"); if (fp == NULL){
+    fp = fopen("/mnt/host/char_label_smallNORB.bin", "rb"); if (fp == NULL){
         printf("Cannot open file.\n");
         exit(1);
     }
@@ -224,7 +224,7 @@ int main() {
     }
     fread(digits_W, sizeof(char), num_primary_caps * num_class * dim_predic_vector * dim_primary_caps, fp);
     printf("digits_W : OK\n");
-    printf("\n");*/
+    printf("\n");
     ///////////////////////////////////////////
     fp = fopen("/mnt/host/char_digit_caps_bias_smallNORB.bin", "rb"); if (fp == NULL){
         printf("Cannot open file.\n");
@@ -295,45 +295,15 @@ int main() {
         printf("\n");
         start_time = alt_nticks();
         convolution(input_ptr, kernel0_ptr,  output_ptr, conv1_in_width, conv1_in_ch, conv1_out_width, conv1_out_ch, conv1_stride);
-        /*IOWR(0x04000020,0, 32);
-                   IOWR(0x04000028,0, 1);
-                   IOWR(0x04000030,0, 24);
-                   IOWR(0x04000038,0, 256);
-                   IOWR(0x04000040,0, 1);
 
-                   IOWR(0x04000048, 0, 0);
-                   IOWR(0x4000018,0,0);
-                   IOWR(0x04000008,0,1); // start
-
-                   start_time = alt_nticks();
-                    while(1){
-                      if((IORD(0x4000018,0)>>1)==1)break;
-                   }*/
         ReLU(output_ptr,input_ptr);
         finish_time = alt_nticks();
                 total_time = ((finish_time - start_time));
                 printf("1D Conv + ReLu time: %d ms\n", total_time);
-        //printf("\n");
-        //printf("conv1 layer completed.\n");
-        ///////////////////////////////////////////
+
         start_time = alt_nticks();
         convolution(input_ptr, kernel1_ptr, output_ptr, conv2_in_width, conv2_in_ch, conv2_out_width, conv2_out_ch, conv2_stride);
-        //printf("\nconv2 layer completed.\n");
-        /*IOWR(0x04000020,0, 24);
-           IOWR(0x04000028,0, 256);
-           IOWR(0x04000030,0, 8);
-           IOWR(0x04000038,0, 256);
-           IOWR(0x04000040,0, 2);
 
-           IOWR(0x04000048, 0, 1);
-           IOWR(0x4000018,0,0);
-           IOWR(0x04000008,0,1); // start
-
-           start_time = alt_nticks();
-            while(1){
-              if((IORD(0x4000018,0)>>1)==1)break;
-           }*/
-        ///////////////////////////////////////////
         finish_time = alt_nticks();
         total_time = ((finish_time - start_time));
                         printf("2D Conv time: %d ms\n", total_time);
@@ -352,16 +322,13 @@ int main() {
                           total_time = ((finish_time - start_time));
                           printf("transpose + u_hat time: %d s\n", total_time);
         printf("\n");
-        //printf("\n");
-        //printf("\prediction_vectors completed.\n");
-        ///////////////////////////////////////////
+
         start_time = alt_nticks();
         dynamic_routing(input_ptr, bias_ptr, output_ptr);
         finish_time = alt_nticks();
                              total_time = ((finish_time - start_time));
                              printf("dr time: %d ms\n", total_time);
-        //printf("\dynamic routing completed.\n");
-        ///////////////////////////////////////////
+
 
         printf("\n");
         for (int i = 0; i < num_class; i++) {
