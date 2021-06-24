@@ -1,1 +1,2 @@
-# KAU deep learning FINAL PROJECT 입니다.
+# KAU deep learning FINAL PROJECT
+
