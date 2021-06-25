@@ -11,4 +11,5 @@ test_loader = torch.utils.data.DataLoader(test_dataset, batch_size=128, shuffle=
 
 => gpu개수에 따라 num_workers를 제거하거나 수정한다.
 
-2. 코드에 datasets를 받는 코드가 있기때문에 따로 다운받지 않아도 된다. (dataset코드 홈페이지를 보고서에 첨부하였다.)
+
+코드에 datasets를 받는 코드가 있기때문에 따로 다운받지 않아도 된다. (dataset코드 홈페이지를 보고서에 첨부하였다.)
