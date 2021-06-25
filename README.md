@@ -3,7 +3,7 @@
   
 작업환경 : Google Colab, Jupyter Notebook(GPU)
 실행시 주의사항
-1. train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=256, shuffle=True, num_workers=2)
+train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=256, shuffle=True, num_workers=2)
 test_loader = torch.utils.data.DataLoader(test_dataset, batch_size=128, shuffle=True, num_workers=2)
 => gpu개수에 따라 num_workers를 제거하거나 수정한다.
 
