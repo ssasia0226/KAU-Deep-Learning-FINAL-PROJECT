@@ -1,7 +1,7 @@
 # KAU deep learning FINAL PROJECT
 
 
-## how to run your source code 
+## <How to run your source code>
 
   
 작업환경 : Google Colab, Jupyter Notebook(GPU)
